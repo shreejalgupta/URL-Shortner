@@ -53,6 +53,20 @@ const App = () => {
     
   };
 
+  const handleCopyClick = (code) => {
+      
+    const baseUrl = `http://localhost:3000/${code}`
+
+    navigator.clipboard.writeText(baseUrl)
+      .then(() => {
+        alert("Copied: " + baseUrl);
+      })
+      .catch(err => {
+        console.error("Failed to copy: ", err);
+      });
+
+  }
+
   const deleteUrl = async (id) => {
     try {
       await axios.delete(`http://localhost:5173/api/delete/${id}`);
@@ -144,6 +158,9 @@ const App = () => {
                   <p className="px-3 py-2 bg-gray-800 rounded-lg text-green-50">
                     {e.click} clicks
                   </p>
+                  <button onClick={() => handleCopyClick(e.shortCode)} className="border border-white rounded-lg px-3 py-2 hover:bg-white hover:text-black duration-150 cursor-pointer">
+                    Copy Link
+                  </button>
                   <a
                     href={`http://localhost:3000/${e.shortCode}`}
                     target="_blank"
