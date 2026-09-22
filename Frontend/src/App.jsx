@@ -9,7 +9,7 @@ const App = () => {
 
   const allUrl = async () => {
     try {
-      const urlIs = await axios.get("http://localhost:5173/api/url");
+      const urlIs = await axios.get("https://url-shortner-1-pscj.onrender.com/api/url");
 
       const allUrlIs = urlIs.data.data.allUrl;
       setAllUrls(allUrlIs);
@@ -44,7 +44,7 @@ const App = () => {
     setErrorIs(false);
 
     try {
-      const newUrl = await axios.post("http://localhost:5173/api/url-create", {
+      const newUrl = await axios.post("https://url-shortner-1-pscj.onrender.com/api/url-create", {
         url: inputIs.trim(),
       });
       setAllUrls((prev) => [...prev, newUrl.data.data]);
@@ -55,7 +55,7 @@ const App = () => {
 
   const handleCopyClick = (code) => {
       
-    const baseUrl = `http://localhost:3000/${code}`
+    const baseUrl = `https://url-shortner-1-pscj.onrender.com/${code}`
 
     navigator.clipboard.writeText(baseUrl)
       .then(() => {
@@ -64,12 +64,12 @@ const App = () => {
       .catch(err => {
         console.error("Failed to copy: ", err);
       });
-
+      
   }
 
   const deleteUrl = async (id) => {
     try {
-      await axios.delete(`http://localhost:5173/api/delete/${id}`);
+      await axios.delete(`https://url-shortner-1-pscj.onrender.com/api/delete/${id}`);
 
       const newAllUrls = allUrls.filter((e) => e._id !== id);
 
@@ -142,7 +142,7 @@ const App = () => {
               <div key={i} className="flex flex-col gap-2 border-b border-b-gray-500 py-4">
                 <div className="flex flex-col ">
                   <a
-                    href={`http://localhost:3000/${e.shortCode}`}
+                    href={`https://url-shortner-1-pscj.onrender.com/${e.shortCode}`}
                     target="_blank"
                     rel="noreferrer"
                     onClick={() => handleUrlClick(e)}
@@ -162,7 +162,7 @@ const App = () => {
                     Copy Link
                   </button>
                   <a
-                    href={`http://localhost:3000/${e.shortCode}`}
+                    href={`https://url-shortner-1-pscj.onrender.com/${e.shortCode}`}
                     target="_blank"
                     rel="noreferrer"
                     onClick={() => handleUrlClick(e)}
