@@ -7,9 +7,9 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-  origin: "https://url-shortner-g7vqchwi5-shreejalguptas-projects.vercel.app/", // Vercel frontend URL
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+    origin: ["https://url-shortner-g7vqchwi5-shreejalguptas-projects.vercel.app/", "https://url-shortner-three-murex.vercel.app/"], // Vercel frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
 }));
 
 app.get("/", (req, res) => {
