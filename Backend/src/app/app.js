@@ -1,9 +1,16 @@
 import express from "express";
 import urlRoute from "../routes/url.routes.js";
 import urlModel from "../model/urlSchema.js";
+import cors from "cors"
 
 const app = express();
 app.use(express.json());
+
+app.use(cors({
+  origin: "https://url-shortner-three-murex.vercel.app", // Vercel frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 
 app.get("/", (req, res) => {
     return res.send("Ok got it");
